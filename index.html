@@ -262,7 +262,7 @@
 
         function initialLoad() {
             var testArray = [];
-
+            mongoTest();
             if(myStorage.getItem("userListJSON")) {
                 alert("Local storage exists!");
                 testArray = JSON.parse(myStorage.getItem("userListJSON"));
@@ -280,6 +280,18 @@
             document.getElementById("nameDiv").style.display = "inline-block";
         }
 
+
+        function mongoTest(){
+            var MongoClient = require('mongodb').MongoClient;
+// the client db connection scope is wrapped in a callback:
+            MongoClient.connect('mongodb://'+connection_string, function(err, db) {
+                if(err) throw err;
+                var collection = db.collection('books').find().limit(10).toArray(function(err, docs) {
+                    alert(docs);
+                    db.close();
+                })
+            });
+        }
 
     </script>
 </body>
