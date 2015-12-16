@@ -261,13 +261,18 @@
 
 
         function initialLoad() {
-            var testArray = JSON.parse(myStorage.getItem("userListJSON"));
-            for(var i = 0; i<testArray.length; i++) {
-                //alert(JSON.stringify(testArray[i]));
-                userList[i] = new User(testArray[i]["name"],testArray[i]["email"]);
-                userList[i].quizScores = testArray[i]["quizScores"];
+            var testArray = [];
+
+            if(myStorage.getItem("userListJSON")) {
+                alert("Local storage exists!");
+                testArray = JSON.parse(myStorage.getItem("userListJSON"));
+                for(var i = 0; i<testArray.length; i++) {
+                    //alert(JSON.stringify(testArray[i]));
+                    userList[i] = new User(testArray[i]["name"], testArray[i]["email"]);
+                    userList[i].quizScores = testArray[i]["quizScores"];
+                }
             }
-            alert(JSON.stringify(userList));
+            //alert(JSON.stringify(userList));
             questionCounter = 0;
             userAnswer = [];
             currentChecked = [];
