@@ -263,7 +263,7 @@
         function initialLoad() {
             var testArray = [];
             mongoTest();
-            if(myStorage.getItem("userListJSON")) {
+            /*if(myStorage.getItem("userListJSON")) {
                 alert("Local storage exists!");
                 testArray = JSON.parse(myStorage.getItem("userListJSON"));
                 for(var i = 0; i<testArray.length; i++) {
@@ -271,7 +271,7 @@
                     userList[i] = new User(testArray[i]["name"], testArray[i]["email"]);
                     userList[i].quizScores = testArray[i]["quizScores"];
                 }
-            }
+            }*/
             //alert(JSON.stringify(userList));
             questionCounter = 0;
             userAnswer = [];
