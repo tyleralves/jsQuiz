@@ -1,7 +1,7 @@
 /**
  * Created by Tyler on 12/17/2015.
  */
-app.js
+
 //Main App Code
 var qArray = [{question:"What is the authors name?", choices:["Mark","Alex","Tyler","Timothy"],correctAnswer:2},
     {question:"What hockey team is based in San Jose?", choices:["Lions","Tigers","Kings","Sharks"],correctAnswer:3},
