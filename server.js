@@ -2,7 +2,6 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
-var app = express();
 
 
 
@@ -35,7 +34,7 @@ var SampleApp = function() {
         }
     };
 
-    app.use(express.static(__dirname));
+
 
     /**
      *  Populate the cache.
@@ -116,8 +115,8 @@ var SampleApp = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
-
+        self.app = express();
+        self.app.use(express.static('/public'));
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
