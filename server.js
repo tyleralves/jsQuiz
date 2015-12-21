@@ -2,6 +2,8 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
+var app = express();
+
 
 
 /**
@@ -30,9 +32,10 @@ var SampleApp = function() {
             //  allows us to run/test the app locally.
             console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
-        };
+        }
     };
 
+    app.use(express.static(__dirname));
 
     /**
      *  Populate the cache.
@@ -101,8 +104,8 @@ var SampleApp = function() {
         };
 
         self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
+                res.setHeader('Content-Type', 'text/html');
+                res.send(self.cache_get('index.html'));
         };
     };
 
